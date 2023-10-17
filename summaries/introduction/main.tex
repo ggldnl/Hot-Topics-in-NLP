@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Hot Topics in NLP}
+\author{Daniel Gigliotti}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Multilingual Semantics}
+
+Translation-based approach do not work well since they does not understand: they don't take into account context. We would want instead a way to account for context, understanding the underlying semantics. Once we have the semantics, i.e. the meaning, we can also \textbf{scale in multilinguality}: a model that can understand the semantic trained in one language will preserve the same semantic representation when used in other languages.
+
+\begin{itemize}
+    \item \textbf{Implicit} understanding of text\textbf{} in latent form:
+    \begin{itemize}
+        \item Latent forms/representations are disconnected from explicit, grounded representations of meaning;
+        \item \textbf{Effective}, BUT \textbf{hard to interpret};
+        \item Tested \textbf{extrinsically} in downstream applications;
+    \end{itemize}
+    \item \textbf{Explicit} understanding:
+    \begin{itemize}
+        \item Linked to \textbf{lexical-semantic} knowledge resources;
+        \item \textbf{Interpretable} and intelligible;
+        \item Tested both \textbf{intrinsically} (against ground truth semantics) and \textbf{extrinsically} (as above).
+    \end{itemize}
+\end{itemize}
+
+\section{Concepts vs Named Entities}
+
+A \textbf{concept} is a general idea or notion: it represents a category, class or abstract idea \textbf{unambiguously};
+A \textbf{named entity} is a specific instance of a concept in the real world.
+
+\newpage
+
+\section{How to represent words and senses?}
+
+Representing words as vectors yield multiple advantages:
+
+\begin{itemize}
+    \item Easy to use representation;
+    \item Can be visualized;
+    \item Can be combined (to a certain extent);
+\end{itemize}
+
+There are multiple ways we can embed words, but each falls into one of two categories:
+
+\begin{itemize}
+    \item \textbf{Explicit} representation;
+    \item \textbf{Implicit} representation;
+\end{itemize}
+
+The key differences are:
+
+\begin{itemize}
+    \item \textbf{Dimensionality}: Explicit representations, such as one-hot encoding, result in high-dimensional vectors, with a dimension for each unique word in the vocabulary. Implicit representations, on the other hand, create lower-dimensional vectors (e.g., 100-300 dimensions) that capture semantic information.
+
+    \item \textbf{Sparsity}: Explicit representations are typically sparse, as most elements in the vector are zeros except for a single one. Implicit representations are dense, with most elements having non-zero values.
+
+    \item \textbf{Contextual Information}: Implicit representations capture contextual information, meaning that the same word may have different vector representations in different contexts (sense embeddings). Explicit representations, like one-hot encoding, do not capture context.
+
+    \item \textbf{Generalization}: Implicit representations generalize better because they capture semantic and syntactic relationships between words. Explicit representations are limited to counting and presence/absence of words.
+
+\end{itemize}
+
+Implicit word embeddings have become the standard in many natural language processing tasks because of their ability to capture semantic relationships and their lower dimensionality. They are more efficient and perform better in various NLP applications.
+
+\newpage
+
+\begin{itemize}
+    \item \textbf{Explicit} representations:
+    \begin{itemize}
+        \item \textbf{One-Hot Encoding}: in this method, each word in the vocabulary is represented as a vector with all zeros except for one element that is set to 1. The position of the 1 in the vector corresponds to the word's index in the vocabulary. This representation is straightforward and explicit, as each word is uniquely identified by its position in the vector space.
+
+        \item \textbf{Count-Based Methods} (e.g., Document-Term Matrix): count word occurrences in documents or corpora. These methods create a matrix where each row corresponds to a word, and each column corresponds to a document, with the matrix cells containing word counts. These explicit representations capture co-occurrence information between words but may result in high-dimensional and sparse matrices.
+
+        \item \textbf{TF-IDF} (Term Frequency-Inverse Document Frequency): TF-IDF is another explicit representation that calculates a weight for each word based on its frequency in a document relative to its frequency across all documents. It assigns a numeric value to each word that reflects its importance in a specific document.
+    \end{itemize}
+
+    \item \textbf{Implicit} representations:
+
+    \begin{itemize}
+        \item \textbf{Word Embeddings}: encode words as continuous-valued vectors in a lower-dimensional space. Word embeddings are learned through neural network-based models such as Word2Vec, GloVe, and fastText. These models capture semantic and syntactic relationships between words by considering their co-occurrence patterns in a large text corpus. The resulting word vectors are dense and capture similarities and differences between words in a distributed representation.
+    \end{itemize}
+
+\end{itemize}
+
+\end{document}
