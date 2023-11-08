@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 
+\usepackage{comment}
+
 \title{Hot Topics in NLP}
 \author{Daniel Gigliotti}
 \date{}
@@ -86,5 +88,33 @@ Implicit word embeddings have become the standard in many natural language proce
     \end{itemize}
 
 \end{itemize}
+
+\section{PPMI}
+
+\begin{comment}
+In implicit representations the number of dimensions of the representation is smaller, not readable. Once we decie how big the vector will be, it is a neural network that during the training process will create it, we have no control over it.
+In explicit representations the number of dimensions of the representation is larger, normally given by the size of the vocabulary.
+Explicit representation can be created either from words or senses.
+
+
+ppMI(w, w') = log((P(w, w'))/(P(w)P(w'))) if P(w, w') > 0 else 0
+\end{comment}
+
+PPMI stands for "Positive Pointwise Mutual Information" and is a term used in the context of word embeddings and natural language processing. Pointwise Mutual Information (PMI) is a measure that assesses the statistical association between two words in a text corpus. It is often used to build word embeddings or represent the relationships between words in a high-dimensional vector space.
+
+PPMI is a variation of PMI that focuses on the positive associations between words. PMI can take both positive and negative values, but in many natural language processing tasks, negative associations are not as useful as positive associations. PPMI is calculated as follows:
+
+\begin{equation}
+    PPMI(w_i, w_j) = max(log_2(\frac{P(w_i, w_j)}{P(w_i)P(w_j)}, 0))
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $PPMI(w_i, w_j)$ is the Positive PMI between words $w_i$ and $w_j$;
+    \item $P(w_i, w_j)$ is the probability of co-occurrence of words $w_i$ and $w_j$ in a given text corpus;
+    \item $P(w_i)$ and $P(w_j)$ are the individual probabilities of words $w_i$ and $w_j$ occurring in the corpus;
+\end{itemize}
+
+The max function ensures that negative PMI values are truncated to zero, emphasizing only positive associations between words. PPMI is often used in the construction of word co-occurrence matrices or in word embedding models like Latent Semantic Analysis (LSA) to capture the semantic relationships between words in a corpus while downplaying irrelevant or negative associations.
 
 \end{document}
