@@ -470,3 +470,8 @@ cython_debug/
 *.zip
 *.jsonl
 *.xlsx
+*.jpg
+*.png
+*.JPG
+*.jpeg
+*.PNG
